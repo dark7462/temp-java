@@ -43,5 +43,50 @@ class LL{
             temp = temp.next;
         }
         System.out.println();
+    }   
+    // delete at head
+    public void deleteAtHead(){
+        if(head == null){
+            System.out.println("List is empty");
+            return;
+        }else{
+            head = head.next;
+        }
+    }
+
+    // delete at last
+    public void deleteAtLast(){
+        if(head == null){
+            System.out.println("List is empty");
+            return;
+        }else if(head.next == null){
+            head = null;
+        }else{
+            Node temp = head;
+            while(temp.next != null){
+                temp = temp.next;
+            }
+            temp = null;
+        }
+    }
+
+    // delete at position
+    public void deleteAtPosition(int pos){
+        if(head == null){
+            System.out.println("List is empty");
+            return;
+        }else if(pos == 0){
+            deleteAtHead();
+        }else{
+            Node temp = head;
+            for(int i = 0; temp != null && i < pos - 1; i++){
+                temp = temp.next;
+            }
+            if(temp == null || temp.next == null){
+                System.out.println("Position is out of bounds");
+                return;
+            }
+            temp.next = temp.next.next;
+        }
     }
 }
